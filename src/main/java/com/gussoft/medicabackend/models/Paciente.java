@@ -1,7 +1,11 @@
 package com.gussoft.medicabackend.models;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
+@ApiModel(description = "Informacion del Paciente")
 @Entity
 public class Paciente {
 
@@ -10,6 +14,7 @@ public class Paciente {
     private Integer id;
 
     //@Size(min = 3, message = "Nombres deben tener minimo 3 caracteres")
+    @ApiModelProperty(notes = "Nombre del Paciente...")
     @Column(nullable = false, length = 80)
     private String nombres;
 

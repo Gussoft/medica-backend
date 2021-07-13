@@ -1,36 +1,38 @@
 package com.gussoft.medicabackend.service.impl;
 
+import com.gussoft.medicabackend.models.Examen;
 import com.gussoft.medicabackend.models.Paciente;
-import com.gussoft.medicabackend.repository.PacienteRepository;
-import com.gussoft.medicabackend.service.PacienteService;
+import com.gussoft.medicabackend.repository.ExamenRepository;
+import com.gussoft.medicabackend.service.ExamenService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PacienteServiceImpl implements PacienteService {
+public class ExamenServiceImpl implements ExamenService {
 
     @Autowired
-    private PacienteRepository repo;
+    private ExamenRepository repo;
 
     @Override
-    public Paciente registrar(Paciente paciente) {
-        return repo.save(paciente);
+    public Examen registrar(Examen examen) {
+        return repo.save(examen);
     }
 
     @Override
-    public Paciente modificar(Paciente paciente) {
-        return repo.save(paciente);
+    public Examen modificar(Examen examen) {
+        return repo.save(examen);
     }
 
     @Override
-    public List<Paciente> listar() {
+    public List<Examen> listar() {
         return repo.findAll();
     }
 
     @Override
-    public Paciente leerById(Integer id) {
+    public Examen leerById(Integer id) {
         return repo.findById(id).orElse(null);
     }
 
