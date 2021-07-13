@@ -2,6 +2,7 @@ package com.gussoft.medicabackend.controller;
 
 import com.gussoft.medicabackend.exception.ModelNotFoundException;
 import com.gussoft.medicabackend.models.Consulta;
+import com.gussoft.medicabackend.models.dto.ConsultaListExamen;
 import com.gussoft.medicabackend.service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,8 +36,8 @@ public class ConsultaController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> registrar(@RequestBody Consulta obj){
-        Consulta name = service.registrar(obj);
+    public ResponseEntity<Object> registrar(@RequestBody ConsultaListExamen obj){
+        Consulta name = service.resgistrarTrans(obj);//registrar change
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(name.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
