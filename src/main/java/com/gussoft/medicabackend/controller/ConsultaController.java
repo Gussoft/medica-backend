@@ -3,6 +3,7 @@ package com.gussoft.medicabackend.controller;
 import com.gussoft.medicabackend.exception.ModelNotFoundException;
 import com.gussoft.medicabackend.models.Consulta;
 import com.gussoft.medicabackend.models.dto.ConsultaListExamen;
+import com.gussoft.medicabackend.models.dto.ConsultaResumen;
 import com.gussoft.medicabackend.service.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -57,5 +59,12 @@ public class ConsultaController {
             service.eliminar(id);
         }
         return new ResponseEntity<Object>(name,HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/listarResumen")
+    public ResponseEntity<List<ConsultaResumen>> listarResumen(){
+        List<ConsultaResumen> consultas = new ArrayList<>();
+        consultas = service.listarResumen();
+        return new ResponseEntity<List<ConsultaResumen>>(consultas,HttpStatus.OK);
     }
 }
